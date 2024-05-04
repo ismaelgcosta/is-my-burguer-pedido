@@ -33,8 +33,17 @@ build/
 ### VS Code ###
 .vscode/
 
+./docs
+./terraform
+./shell
+./.mvn
+Dockerfile
+*.json
+*.cmd
+
 # Local .terraform directories
 **/.terraform/*
+terraform/*
 
 # .tfstate files
 *.tfstate
