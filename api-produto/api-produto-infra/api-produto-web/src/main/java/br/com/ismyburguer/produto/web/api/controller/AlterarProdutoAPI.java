@@ -26,7 +26,7 @@ public class AlterarProdutoAPI {
         this.converter = converter;
     }
 
-    @Operation(security = @SecurityRequirement(name = "Bearer Authentication"), description = "Alterar Produto")
+    @Operation(security = @SecurityRequirement(name = "Bearer-Authentication"), description = "Alterar Produto")
     @PutMapping("/{produtoId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void alterarProduto(

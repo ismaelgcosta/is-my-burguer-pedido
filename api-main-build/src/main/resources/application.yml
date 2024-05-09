@@ -83,9 +83,6 @@ spring:
   security:
     oauth2:
       client:
-        registration:
-          cognito:
-            client-id: ${CLIENT_CREDENTIALS_ID}
         provider:
           cognito:
             authorization-uri: https://${aws.cognito.domain}.auth.${aws.region}.amazoncognito.com/oauth2/authorize
@@ -129,7 +126,7 @@ eureka:
     registerWithEureka: true
     fetchRegistry: true
     serviceUrl:
-      defaultZone: https://localhost/eureka
+      defaultZone: https://${SERVICE_DISCOVERY_USERNAME}:${SERVICE_DISCOVERY_PASSWORD}@localhost/eureka
     healthcheck:
       enabled: true
     tls:

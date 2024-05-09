@@ -31,7 +31,7 @@ public class ListarProdutoAPI {
         this.listarProdutoConverter = listarProdutoConverter;
     }
 
-    @Operation(security = @SecurityRequirement(name = "Bearer Authentication"), description = "Listar Produtos por Categoria")
+    @Operation(security = @SecurityRequirement(name = "Bearer-Authentication"), description = "Listar Produtos por Categoria")
     @GetMapping("/categorias/{categoria}")
     public List<ListarProdutoResponse> listarProdutos(
             @Valid

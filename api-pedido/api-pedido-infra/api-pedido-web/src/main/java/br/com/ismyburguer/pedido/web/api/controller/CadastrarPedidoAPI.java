@@ -26,7 +26,7 @@ public class CadastrarPedidoAPI {
         this.cadastrarPedidoRequestConverter = cadastrarPedidoRequestConverter;
     }
 
-    @Operation(security = @SecurityRequirement(name = "Bearer Authentication"), description = "Cadastrar Pedido")
+    @Operation(security = @SecurityRequirement(name = "Bearer-Authentication"), description = "Cadastrar Pedido")
     @PostMapping
     public UUID cadastrarPedido(@RequestBody CadastrarPedidoRequest cadastrarPedidoRequest) {
         return cadastrarPedidoUseCase.cadastrar(cadastrarPedidoRequestConverter.convert(cadastrarPedidoRequest));

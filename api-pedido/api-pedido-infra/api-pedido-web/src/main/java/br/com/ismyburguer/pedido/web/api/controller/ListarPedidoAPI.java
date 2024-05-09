@@ -26,7 +26,7 @@ public class ListarPedidoAPI {
         this.listarPedidoConverter = listarPedidoConverter;
     }
 
-    @Operation(security = @SecurityRequirement(name = "Bearer Authentication"), description = "Listar Pedidos")
+    @Operation(security = @SecurityRequirement(name = "Bearer-Authentication"), description = "Listar Pedidos")
     @GetMapping
     public List<ListarPedidoResponse> listar() {
         return listarPedidoUseCase.listar().stream().map(listarPedidoConverter::convert).toList();

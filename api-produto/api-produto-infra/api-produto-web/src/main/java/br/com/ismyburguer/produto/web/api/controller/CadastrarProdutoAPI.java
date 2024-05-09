@@ -27,7 +27,7 @@ public class CadastrarProdutoAPI {
         this.cadastrarProdutoRequestConverter = cadastrarProdutoRequestConverter;
     }
 
-    @Operation(security = @SecurityRequirement(name = "Bearer Authentication"), description = "Cadastrar Produto")
+    @Operation(security = @SecurityRequirement(name = "Bearer-Authentication"), description = "Cadastrar Produto")
     @PostMapping
     public UUID cadastrarProduto(@RequestBody CriarProdutoRequest criarProdutoRequest) {
         return cadastrarProdutoUseCase.cadastrar(cadastrarProdutoRequestConverter.convert(criarProdutoRequest));

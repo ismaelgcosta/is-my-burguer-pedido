@@ -27,7 +27,7 @@ public class StatusPedidoAPI {
         this.useCase = useCase;
     }
 
-    @Operation(security = @SecurityRequirement(name = "Bearer Authentication"), description = "Alterar Status do Pedido")
+    @Operation(security = @SecurityRequirement(name = "Bearer-Authentication"), description = "Alterar Status do Pedido")
     @PutMapping("/{pedidoId}/{status}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void alterarStatusPedido(
@@ -36,14 +36,16 @@ public class StatusPedidoAPI {
                     allowableValues = {
                             "ABERTO",
                             "FECHADO",
+                            "AGUARDANDO_PAGAMENTO",
                             "PAGO",
+                            "PAGAMENTO_NAO_AUTORIZADO",
                             "RECEBIDO",
                             "EM_PREPARACAO",
                             "PRONTO",
                             "FINALIZADO"
                     })
             @EnumNamePattern(
-                    regexp = "ABERTO|FECHADO|PAGO|RECEBIDO|EM_PREPARACAO|PRONTO|FINALIZADO",
+                    regexp = "ABERTO|FECHADO|PAGO|RECEBIDO|EM_PREPARACAO|PRONTO|FINALIZADO|PAGAMENTO_NAO_AUTORIZADO|AGUARDANDO_PAGAMENTO",
                     message = "O campo status do pedido deve ser igual a {regexp}"
             ) String status
     ) {

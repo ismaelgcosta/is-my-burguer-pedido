@@ -28,7 +28,7 @@ public class BuscarPedidoAPI {
         this.buscarPedidoConverter = buscarPedidoConverter;
     }
 
-    @Operation(security = @SecurityRequirement(name = "Bearer Authentication"), description = "Consultar Pedido")
+    @Operation(security = @SecurityRequirement(name = "Bearer-Authentication"), description = "Consultar Pedido")
     @GetMapping("/{pedidoId}")
     public BuscarPedidoResponse obter(@Valid @UUID @PathVariable(name = "pedidoId") String pedidoId) {
         return buscarPedidoConverter.convert(consultarPedidoUseCase.buscarPorId(new Pedido.PedidoId(pedidoId)));

@@ -92,7 +92,7 @@ public class Pedido implements Validation {
             String message = "O Pedido precisa estar com o Status {0} para poder ser alterado para " + statusPedido.getDescricao();
 
             if(statusPedido == AGUARDANDO_PAGAMENTO && this != FECHADO) {
-                throw new BusinessException(MessageFormat.format(message, AGUARDANDO_PAGAMENTO.getDescricao()));
+                throw new BusinessException(MessageFormat.format(message, FECHADO.getDescricao()));
             }
 
             if(statusPedido == EM_PREPARACAO && this != RECEBIDO) {

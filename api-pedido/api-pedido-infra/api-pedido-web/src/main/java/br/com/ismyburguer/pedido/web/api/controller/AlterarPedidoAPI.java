@@ -26,7 +26,7 @@ public class AlterarPedidoAPI {
         this.converter = converter;
     }
 
-    @Operation(security = @SecurityRequirement(name = "Bearer Authentication"), description = "Alterar Pedido")
+    @Operation(security = @SecurityRequirement(name = "Bearer-Authentication"), description = "Alterar Pedido")
     @PutMapping("/{pedidoId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void alterarPedido(

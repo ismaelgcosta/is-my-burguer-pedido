@@ -25,7 +25,7 @@ public class CheckoutPedidoAPI {
         this.useCase = useCase;
     }
 
-    @Operation(security = @SecurityRequirement(name = "Bearer Authentication"), description = "Pedido Checkout")
+    @Operation(security = @SecurityRequirement(name = "Bearer-Authentication"), description = "Pedido Checkout")
     @PutMapping("/{pedidoId}/checkout")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void fecharPedido(

@@ -27,7 +27,7 @@ public class BuscarProdutoAPI {
         this.buscarProdutoConverter = buscarProdutoConverter;
     }
 
-    @Operation(security = @SecurityRequirement(name = "Bearer Authentication"), description = "Consultar Produto")
+    @Operation(security = @SecurityRequirement(name = "Bearer-Authentication"), description = "Consultar Produto")
     @GetMapping("/{produtoId}")
     public BuscarProdutoResponse obterProduto(@PathVariable(name = "produtoId") @UUID @Valid String produtoId) {
         return buscarProdutoConverter.convert(consultarProdutoUseCase.buscar(new ConsultarProdutoUseCase.ConsultaProdutoQuery(produtoId)));

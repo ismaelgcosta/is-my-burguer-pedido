@@ -24,7 +24,7 @@ public class InativarProdutoAPI {
         this.useCase = useCase;
     }
 
-    @Operation(security = @SecurityRequirement(name = "Bearer Authentication"), description = "Inativar Produto")
+    @Operation(security = @SecurityRequirement(name = "Bearer-Authentication"), description = "Inativar Produto")
     @DeleteMapping("/{produtoId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void inativarProduto(

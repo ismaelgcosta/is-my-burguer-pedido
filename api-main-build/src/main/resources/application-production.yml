@@ -83,9 +83,6 @@ spring:
   security:
     oauth2:
       client:
-        registration:
-          cognito:
-            client-id: ${CLIENT_CREDENTIALS_ID}
         provider:
           cognito:
             authorization-uri: https://${aws.cognito.domain}.auth.${aws.region}.amazoncognito.com/oauth2/authorize
@@ -109,7 +106,7 @@ info:
 eureka:
   instance:
     hostname: is-my-burguer-pedido-svc
-    preferIpAddress: false
+    preferIpAddress: true
     secure-port: ${server.port}
     secure-port-enabled: true
     non-secure-port-enabled: false
@@ -125,7 +122,7 @@ eureka:
     registerWithEureka: true
     fetchRegistry: true
     serviceUrl:
-      defaultZone: https://is-my-burguer-sd-lb/eureka
+      defaultZone: https://${SERVICE_DISCOVERY_USERNAME}:${SERVICE_DISCOVERY_PASSWORD}@is-my-burguer-sd-lb/eureka
     healthcheck:
       enabled: true
     tls:
