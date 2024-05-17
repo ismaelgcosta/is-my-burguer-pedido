@@ -1,6 +1,5 @@
 package br.com.ismyburguer.core.adapter.out;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import feign.Feign;
 import org.apache.hc.client5.http.ssl.TrustAllStrategy;
 import org.apache.hc.core5.ssl.SSLContextBuilder;

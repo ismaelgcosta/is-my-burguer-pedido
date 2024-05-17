@@ -1,9 +1,10 @@
 package br.com.ismyburguer.pagamento.adapter.client;
+
+import br.com.ismyburguer.core.adapter.out.FeignClientAPI;
 import br.com.ismyburguer.core.exception.EntityNotFoundException;
 import br.com.ismyburguer.pagamento.adapter.converter.PagamentoResponseToPagamentoConverter;
 import br.com.ismyburguer.pagamento.adapter.response.PagamentoResponse;
 import br.com.ismyburguer.pagamento.entity.Pagamento;
-import br.com.ismyburguer.core.adapter.out.FeignClientAPI;
 import feign.FeignException;
 import io.github.benas.randombeans.EnhancedRandomBuilder;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,10 +14,10 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.UUID;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
-
-import java.util.UUID;
 
 @ExtendWith(MockitoExtension.class)
 public class ConsultarPagamentoAPIImplTest {

@@ -1,4 +1,5 @@
 package br.com.ismyburguer.pedido.web.api.converter;
+
 import br.com.ismyburguer.pedido.entity.ItemPedido;
 import br.com.ismyburguer.pedido.entity.Pedido;
 import br.com.ismyburguer.pedido.web.api.request.CadastrarItemPedidoRequest;
@@ -9,8 +10,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 
-import java.math.BigDecimal;
-import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 

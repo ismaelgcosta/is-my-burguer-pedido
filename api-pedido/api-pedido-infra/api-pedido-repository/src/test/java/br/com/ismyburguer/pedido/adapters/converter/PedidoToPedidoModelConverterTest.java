@@ -1,13 +1,13 @@
 package br.com.ismyburguer.pedido.adapters.converter;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
 
 import br.com.ismyburguer.pedido.adapters.entity.PedidoModel;
 import br.com.ismyburguer.pedido.entity.ItemPedido;
 import br.com.ismyburguer.pedido.entity.Pedido;
-import org.junit.jupiter.api.Test;
 import io.github.benas.randombeans.api.EnhancedRandom;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class PedidoToPedidoModelConverterTest {
 

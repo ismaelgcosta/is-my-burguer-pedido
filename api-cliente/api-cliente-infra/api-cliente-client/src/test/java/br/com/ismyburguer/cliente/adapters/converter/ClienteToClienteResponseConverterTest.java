@@ -2,12 +2,10 @@ package br.com.ismyburguer.cliente.adapters.converter;
 
 import br.com.ismyburguer.cliente.adapters.response.ClienteResponse;
 import br.com.ismyburguer.cliente.entity.Cliente;
-import br.com.ismyburguer.core.adapter.in.WebConverter;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.Optional;
 import java.util.UUID;
 
 import static java.util.Optional.empty;

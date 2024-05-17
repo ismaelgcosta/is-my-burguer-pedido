@@ -9,7 +9,6 @@ import lombok.Setter;
 import org.hibernate.validator.constraints.UUID;
 
 import java.math.BigDecimal;
-import java.util.Optional;
 
 @Getter
 @Setter

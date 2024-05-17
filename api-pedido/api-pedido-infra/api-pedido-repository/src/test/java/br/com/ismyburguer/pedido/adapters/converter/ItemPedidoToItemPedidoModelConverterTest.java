@@ -1,10 +1,11 @@
 package br.com.ismyburguer.pedido.adapters.converter;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import br.com.ismyburguer.pedido.adapters.entity.ItemPedidoModel;
 import br.com.ismyburguer.pedido.entity.ItemPedido;
 import io.github.benas.randombeans.EnhancedRandomBuilder;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ItemPedidoToItemPedidoModelConverterTest {
 

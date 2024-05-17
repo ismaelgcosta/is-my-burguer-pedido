@@ -1,9 +1,9 @@
 package br.com.ismyburguer.pedido.adapters.converter;
 
-import br.com.ismyburguer.pedido.adapters.entity.PedidoModel;
-import br.com.ismyburguer.pedido.entity.Pedido;
 import br.com.ismyburguer.core.adapter.Converter;
 import br.com.ismyburguer.core.adapter.out.PersistenceConverter;
+import br.com.ismyburguer.pedido.adapters.entity.PedidoModel;
+import br.com.ismyburguer.pedido.entity.Pedido;
 
 @PersistenceConverter
 public class PedidoModelToPedidoConverter implements Converter<PedidoModel, Pedido> {

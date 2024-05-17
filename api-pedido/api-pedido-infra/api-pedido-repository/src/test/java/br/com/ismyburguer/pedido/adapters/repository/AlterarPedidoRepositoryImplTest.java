@@ -1,10 +1,10 @@
 package br.com.ismyburguer.pedido.adapters.repository;
+
 import br.com.ismyburguer.core.exception.EntityNotFoundException;
 import br.com.ismyburguer.pedido.adapters.converter.PedidoToPedidoModelConverter;
 import br.com.ismyburguer.pedido.adapters.entity.PedidoModel;
-import br.com.ismyburguer.pedido.adapters.entity.StatusPedidoEntity;
 import br.com.ismyburguer.pedido.entity.Pedido;
-import br.com.ismyburguer.pedido.gateway.out.AlterarPedidoRepository;
+import io.github.benas.randombeans.api.EnhancedRandom;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -15,11 +15,9 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.Optional;
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
-
-import io.github.benas.randombeans.api.EnhancedRandom;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 public class AlterarPedidoRepositoryImplTest {

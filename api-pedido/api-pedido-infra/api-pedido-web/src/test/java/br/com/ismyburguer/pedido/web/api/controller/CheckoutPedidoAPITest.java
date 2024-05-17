@@ -1,4 +1,5 @@
 package br.com.ismyburguer.pedido.web.api.controller;
+
 import br.com.ismyburguer.pedido.adapter.interfaces.in.FecharPedidoUseCase;
 import br.com.ismyburguer.pedido.entity.Pedido;
 import org.junit.jupiter.api.Test;
@@ -9,8 +10,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
 class CheckoutPedidoAPITest {

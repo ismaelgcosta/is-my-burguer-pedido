@@ -1,8 +1,8 @@
 package br.com.ismyburguer.pedido.adapters.repository;
+
 import br.com.ismyburguer.pedido.adapters.converter.PedidoToPedidoModelConverter;
 import br.com.ismyburguer.pedido.adapters.entity.PedidoModel;
 import br.com.ismyburguer.pedido.entity.Pedido;
-import br.com.ismyburguer.pedido.gateway.out.CadastrarPedidoRepository;
 import io.github.benas.randombeans.api.EnhancedRandom;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

@@ -12,7 +12,7 @@ import static br.com.ismyburguer.pagamento.entity.Pagamento.FormaPagamento.MERCA
 import static br.com.ismyburguer.pagamento.entity.Pagamento.StatusPagamento.NAO_AUTORIZADO;
 import static br.com.ismyburguer.pagamento.entity.Pagamento.StatusPagamento.PAGO;
 import static br.com.ismyburguer.pagamento.entity.Pagamento.TipoPagamento.QR_CODE;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PagamentoTest {
 

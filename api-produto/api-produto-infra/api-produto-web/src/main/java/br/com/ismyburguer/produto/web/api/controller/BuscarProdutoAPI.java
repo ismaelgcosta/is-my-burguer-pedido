@@ -2,9 +2,9 @@ package br.com.ismyburguer.produto.web.api.controller;
 
 
 import br.com.ismyburguer.core.adapter.in.WebAdapter;
+import br.com.ismyburguer.produto.adapter.interfaces.in.ConsultarProdutoUseCase;
 import br.com.ismyburguer.produto.web.api.converter.BuscarProdutoConverter;
 import br.com.ismyburguer.produto.web.api.response.BuscarProdutoResponse;
-import br.com.ismyburguer.produto.adapter.interfaces.in.ConsultarProdutoUseCase;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;

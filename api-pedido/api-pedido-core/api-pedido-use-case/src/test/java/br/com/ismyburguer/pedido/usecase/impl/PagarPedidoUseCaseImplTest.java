@@ -1,6 +1,5 @@
 package br.com.ismyburguer.pedido.usecase.impl;
 
-import br.com.ismyburguer.core.exception.BusinessException;
 import br.com.ismyburguer.pagamento.adapter.interfaces.in.ConsultarPagamentoUseCase;
 import br.com.ismyburguer.pagamento.adapter.interfaces.in.EfetuarPagamentoUseCase;
 import br.com.ismyburguer.pagamento.entity.Pagamento;
@@ -10,12 +9,10 @@ import br.com.ismyburguer.pedido.entity.ItemPedido;
 import br.com.ismyburguer.pedido.entity.Pedido;
 import io.github.benas.randombeans.EnhancedRandomBuilder;
 import jakarta.validation.ConstraintViolationException;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.math.BigDecimal;

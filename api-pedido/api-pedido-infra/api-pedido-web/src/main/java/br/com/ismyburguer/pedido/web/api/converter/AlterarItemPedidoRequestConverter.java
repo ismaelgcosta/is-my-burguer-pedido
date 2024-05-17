@@ -2,8 +2,8 @@ package br.com.ismyburguer.pedido.web.api.converter;
 
 import br.com.ismyburguer.core.adapter.Converter;
 import br.com.ismyburguer.core.adapter.in.WebConverter;
-import br.com.ismyburguer.pedido.web.api.request.AlterarItemPedidoRequest;
 import br.com.ismyburguer.pedido.entity.ItemPedido;
+import br.com.ismyburguer.pedido.web.api.request.AlterarItemPedidoRequest;
 import jakarta.validation.ConstraintViolationException;
 
 import java.util.UUID;

@@ -1,10 +1,10 @@
 package br.com.ismyburguer.pedido.adapters.repository;
 
+import br.com.ismyburguer.core.adapter.out.PersistenceAdapter;
 import br.com.ismyburguer.pedido.adapters.converter.PedidoToPedidoModelConverter;
 import br.com.ismyburguer.pedido.adapters.entity.PedidoModel;
 import br.com.ismyburguer.pedido.entity.Pedido;
 import br.com.ismyburguer.pedido.gateway.out.CadastrarPedidoRepository;
-import br.com.ismyburguer.core.adapter.out.PersistenceAdapter;
 import org.springframework.validation.annotation.Validated;
 
 import java.util.UUID;

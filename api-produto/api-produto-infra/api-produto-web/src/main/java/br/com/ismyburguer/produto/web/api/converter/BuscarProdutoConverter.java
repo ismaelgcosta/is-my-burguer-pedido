@@ -2,8 +2,8 @@ package br.com.ismyburguer.produto.web.api.converter;
 
 import br.com.ismyburguer.core.adapter.Converter;
 import br.com.ismyburguer.core.adapter.in.WebConverter;
-import br.com.ismyburguer.produto.web.api.response.BuscarProdutoResponse;
 import br.com.ismyburguer.produto.entity.Produto;
+import br.com.ismyburguer.produto.web.api.response.BuscarProdutoResponse;
 import jakarta.validation.ConstraintViolationException;
 
 @WebConverter

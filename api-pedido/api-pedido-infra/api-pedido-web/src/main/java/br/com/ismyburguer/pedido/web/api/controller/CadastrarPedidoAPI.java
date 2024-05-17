@@ -1,12 +1,11 @@
 package br.com.ismyburguer.pedido.web.api.controller;
 
+import br.com.ismyburguer.pedido.adapter.interfaces.in.CadastrarPedidoUseCase;
 import br.com.ismyburguer.pedido.web.api.converter.CadastrarPedidoRequestConverter;
 import br.com.ismyburguer.pedido.web.api.request.CadastrarPedidoRequest;
-import br.com.ismyburguer.pedido.adapter.interfaces.in.CadastrarPedidoUseCase;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

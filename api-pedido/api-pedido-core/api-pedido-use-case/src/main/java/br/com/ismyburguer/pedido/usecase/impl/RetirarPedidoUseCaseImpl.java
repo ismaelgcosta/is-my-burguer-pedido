@@ -1,9 +1,9 @@
 package br.com.ismyburguer.pedido.usecase.impl;
 
 import br.com.ismyburguer.core.usecase.UseCase;
-import br.com.ismyburguer.pedido.entity.Pedido;
 import br.com.ismyburguer.pedido.adapter.interfaces.in.AlterarStatusPedidoUseCase;
 import br.com.ismyburguer.pedido.adapter.interfaces.in.RetirarPedidoUseCase;
+import br.com.ismyburguer.pedido.entity.Pedido;
 
 @UseCase
 public class RetirarPedidoUseCaseImpl implements RetirarPedidoUseCase {

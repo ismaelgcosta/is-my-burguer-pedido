@@ -3,8 +3,6 @@ package br.com.ismyburguer.pagamento.adapter.request;
 import br.com.ismyburguer.pagamento.adapter.enumeration.StatusPagamento;
 import br.com.ismyburguer.pagamento.adapter.enumeration.TipoPagamento;
 import lombok.*;
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import java.math.BigDecimal;
 import java.util.UUID;

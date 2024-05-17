@@ -1,4 +1,5 @@
 package br.com.ismyburguer.pedido.web.api.controller;
+
 import br.com.ismyburguer.pedido.adapter.interfaces.in.ListarPedidoUseCase;
 import br.com.ismyburguer.pedido.entity.Pedido;
 import br.com.ismyburguer.pedido.web.api.converter.ListarPedidoConverter;
@@ -14,7 +15,8 @@ import java.util.Collections;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.any;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class ListarPedidoAPITest {

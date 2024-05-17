@@ -6,7 +6,6 @@ import feign.Headers;
 import feign.Param;
 import feign.RequestLine;
 
-import java.util.Optional;
 import java.util.UUID;
 
 public interface PagamentoAPI {

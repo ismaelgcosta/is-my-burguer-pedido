@@ -4,8 +4,8 @@ import br.com.ismyburguer.cliente.adapter.interfaces.out.ConsultarClienteUseCase
 import br.com.ismyburguer.core.exception.BusinessException;
 import br.com.ismyburguer.core.validation.DomainReferenceValidator;
 import br.com.ismyburguer.core.validation.Validator;
-import br.com.ismyburguer.pedido.entity.Pedido;
 import br.com.ismyburguer.pedido.adapter.interfaces.in.ConsultarPedidoUseCase;
+import br.com.ismyburguer.pedido.entity.Pedido;
 import br.com.ismyburguer.produto.adapter.interfaces.in.ConsultarProdutoUseCase;
 
 import java.util.Optional;

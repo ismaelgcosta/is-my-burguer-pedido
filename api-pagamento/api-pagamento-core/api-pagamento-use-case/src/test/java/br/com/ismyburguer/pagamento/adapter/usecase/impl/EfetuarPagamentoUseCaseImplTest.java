@@ -2,7 +2,6 @@ package br.com.ismyburguer.pagamento.adapter.usecase.impl;
 
 import br.com.ismyburguer.pagamento.entity.Pagamento;
 import br.com.ismyburguer.pagamento.gateway.out.EfetuarPagamentoAPI;
-import jakarta.validation.ConstraintViolationException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -11,8 +10,10 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.Mockito.any;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 public class EfetuarPagamentoUseCaseImplTest {

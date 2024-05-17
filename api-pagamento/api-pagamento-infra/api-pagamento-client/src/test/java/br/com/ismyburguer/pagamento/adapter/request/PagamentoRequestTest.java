@@ -13,9 +13,8 @@ import java.util.UUID;
 
 import static br.com.ismyburguer.pagamento.entity.Pagamento.FormaPagamento.MERCADO_PAGO;
 import static br.com.ismyburguer.pagamento.entity.Pagamento.StatusPagamento.NAO_AUTORIZADO;
-import static br.com.ismyburguer.pagamento.entity.Pagamento.StatusPagamento.PAGO;
 import static br.com.ismyburguer.pagamento.entity.Pagamento.TipoPagamento.QR_CODE;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PagamentoRequestTest {
 

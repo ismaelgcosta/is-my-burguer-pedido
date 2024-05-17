@@ -1,7 +1,7 @@
 package br.com.ismyburguer.produto.adapters.repository;
+
 import br.com.ismyburguer.core.exception.EntityNotFoundException;
 import br.com.ismyburguer.produto.adapters.model.ProdutoModel;
-import br.com.ismyburguer.produto.gateway.out.InativarProdutoRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -11,7 +11,8 @@ import org.mockito.MockitoAnnotations;
 import java.util.Optional;
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
 class InativarProdutoRepositoryImplTest {

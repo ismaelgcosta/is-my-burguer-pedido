@@ -1,4 +1,5 @@
 package br.com.ismyburguer.pedido.web.api.controller;
+
 import br.com.ismyburguer.pedido.adapter.interfaces.in.PagarPedidoUseCase;
 import br.com.ismyburguer.pedido.entity.Pedido;
 import org.junit.jupiter.api.Test;
@@ -10,9 +11,11 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.doThrow;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class PagarPedidoAPITest {

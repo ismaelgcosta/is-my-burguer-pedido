@@ -1,10 +1,10 @@
 package br.com.ismyburguer.pedido.adapters.converter;
 
+import br.com.ismyburguer.core.adapter.Converter;
+import br.com.ismyburguer.core.adapter.out.PersistenceConverter;
 import br.com.ismyburguer.pedido.adapters.entity.PedidoModel;
 import br.com.ismyburguer.pedido.adapters.entity.StatusPedidoEntity;
 import br.com.ismyburguer.pedido.entity.Pedido;
-import br.com.ismyburguer.core.adapter.Converter;
-import br.com.ismyburguer.core.adapter.out.PersistenceConverter;
 
 @PersistenceConverter
 public class PedidoToPedidoModelConverter implements Converter<Pedido, PedidoModel> {

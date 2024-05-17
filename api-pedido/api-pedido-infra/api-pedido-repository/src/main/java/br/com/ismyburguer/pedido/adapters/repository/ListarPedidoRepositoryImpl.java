@@ -3,7 +3,6 @@ package br.com.ismyburguer.pedido.adapters.repository;
 import br.com.ismyburguer.core.adapter.out.PersistenceAdapter;
 import br.com.ismyburguer.pedido.adapters.converter.PedidoModelToPedidoConverter;
 import br.com.ismyburguer.pedido.entity.Pedido;
-import br.com.ismyburguer.pedido.gateway.out.ConsultarPedidoRepository;
 import br.com.ismyburguer.pedido.gateway.out.ListarPedidoRepository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;

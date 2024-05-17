@@ -1,10 +1,10 @@
 package br.com.ismyburguer.pedido.web.api.controller;
 
 
+import br.com.ismyburguer.core.adapter.in.WebAdapter;
+import br.com.ismyburguer.pedido.adapter.interfaces.in.AlterarPedidoUseCase;
 import br.com.ismyburguer.pedido.web.api.converter.AlterarPedidoRequestConverter;
 import br.com.ismyburguer.pedido.web.api.request.AlterarPedidoRequest;
-import br.com.ismyburguer.pedido.adapter.interfaces.in.AlterarPedidoUseCase;
-import br.com.ismyburguer.core.adapter.in.WebAdapter;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;

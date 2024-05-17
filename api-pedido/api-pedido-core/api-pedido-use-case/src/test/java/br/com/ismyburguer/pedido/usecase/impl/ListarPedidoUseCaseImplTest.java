@@ -1,13 +1,11 @@
 package br.com.ismyburguer.pedido.usecase.impl;
-import br.com.ismyburguer.pedido.adapter.interfaces.in.ListarPedidoUseCase;
+
 import br.com.ismyburguer.pedido.entity.Pedido;
 import br.com.ismyburguer.pedido.gateway.out.ListarPedidoRepository;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Arrays;

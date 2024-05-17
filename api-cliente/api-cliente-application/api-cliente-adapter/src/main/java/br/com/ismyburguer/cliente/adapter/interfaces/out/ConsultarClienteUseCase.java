@@ -4,8 +4,6 @@ import br.com.ismyburguer.cliente.entity.Cliente;
 import br.com.ismyburguer.core.adapter.ExistsByIdUseCase;
 import br.com.ismyburguer.core.adapter.ExistsByUsernameUseCase;
 
-import java.util.UUID;
-
 public interface ConsultarClienteUseCase extends ExistsByIdUseCase<Cliente>, ExistsByUsernameUseCase<Cliente> {
 
     Cliente buscarPorUsername(ConsultaClientePorUsername query);

@@ -1,8 +1,8 @@
 package br.com.ismyburguer.pedido.usecase.impl;
 
 import br.com.ismyburguer.core.usecase.UseCase;
-import br.com.ismyburguer.pedido.entity.Pedido;
 import br.com.ismyburguer.pedido.adapter.interfaces.in.AlterarPedidoUseCase;
+import br.com.ismyburguer.pedido.entity.Pedido;
 import br.com.ismyburguer.pedido.gateway.out.AlterarPedidoRepository;
 import br.com.ismyburguer.pedido.usecase.validation.PedidoValidator;
 import jakarta.validation.Valid;

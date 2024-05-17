@@ -1,5 +1,4 @@
 package br.com.ismyburguer.produto.adapters.converter;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import br.com.ismyburguer.produto.adapters.model.Categoria;
 import br.com.ismyburguer.produto.adapters.model.ProdutoModel;
@@ -8,6 +7,8 @@ import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 import java.util.UUID;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ProdutoToProdutoModelConverterTest {
 

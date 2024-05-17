@@ -1,8 +1,8 @@
 package br.com.ismyburguer.pagamento.adapter.usecase.impl;
 
 import br.com.ismyburguer.core.usecase.UseCase;
-import br.com.ismyburguer.pagamento.entity.Pagamento;
 import br.com.ismyburguer.pagamento.adapter.interfaces.in.EfetuarPagamentoUseCase;
+import br.com.ismyburguer.pagamento.entity.Pagamento;
 import br.com.ismyburguer.pagamento.gateway.out.EfetuarPagamentoAPI;
 import jakarta.validation.Valid;
 
