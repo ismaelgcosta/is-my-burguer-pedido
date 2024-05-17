@@ -12,6 +12,7 @@ import java.util.UUID;
 
 @Getter
 @AllArgsConstructor
+@NoArgsConstructor
 public class Cliente implements Validation {
 
     @Valid
@@ -55,6 +56,7 @@ public class Cliente implements Validation {
 
     @Getter
     @AllArgsConstructor
+    @EqualsAndHashCode
     public static class Email {
 
         @jakarta.validation.constraints.Email(message = "Informe um e-mail válido")
@@ -79,6 +81,7 @@ public class Cliente implements Validation {
 
     @Getter
     @AllArgsConstructor
+    @EqualsAndHashCode
     public static class CPF {
 
         @org.hibernate.validator.constraints.br.CPF
@@ -88,6 +91,7 @@ public class Cliente implements Validation {
 
     @Getter
     @AllArgsConstructor
+    @EqualsAndHashCode
     public static class Username {
 
         @NotBlank(message = "Informe o campo username")

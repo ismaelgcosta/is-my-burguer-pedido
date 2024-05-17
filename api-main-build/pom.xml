@@ -16,6 +16,14 @@
     </properties>
 
     <dependencies>
+
+        <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-contract-wiremock -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-contract-wiremock</artifactId>
+            <scope>test</scope>
+        </dependency>
+
         <dependency>
             <groupId>br.com.ismyburguer</groupId>
             <artifactId>api-infra</artifactId>
@@ -83,21 +91,16 @@
         </dependency>
 
         <dependency>
-            <groupId>br.com.ismyburguer</groupId>
-            <artifactId>api-controle-pedido-client</artifactId>
-            <version>${packing.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>br.com.ismyburguer</groupId>
-            <artifactId>api-controle-pedido-use-case</artifactId>
-            <version>${packing.version}</version>
-        </dependency>
-
-        <dependency>
             <groupId>org.yaml</groupId>
             <artifactId>snakeyaml</artifactId>
             <version>1.33</version>
+        </dependency>
+
+        <!-- H2 Database -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>test</scope>
         </dependency>
 
     </dependencies>

@@ -1,15 +1,14 @@
 package br.com.ismyburguer.pedido.usecase.impl;
 
-import br.com.ismyburguer.controlepedido.entity.ControlePedido;
-import br.com.ismyburguer.controlepedido.adapter.interfaces.in.GerarControlePedidoUseCase;
+import br.com.ismyburguer.core.exception.BusinessException;
 import br.com.ismyburguer.core.usecase.UseCase;
-import br.com.ismyburguer.pagamento.entity.Pagamento;
 import br.com.ismyburguer.pagamento.adapter.interfaces.in.ConsultarPagamentoUseCase;
 import br.com.ismyburguer.pagamento.adapter.interfaces.in.EfetuarPagamentoUseCase;
-import br.com.ismyburguer.pedido.entity.Pedido;
+import br.com.ismyburguer.pagamento.entity.Pagamento;
 import br.com.ismyburguer.pedido.adapter.interfaces.in.AlterarStatusPedidoUseCase;
 import br.com.ismyburguer.pedido.adapter.interfaces.in.ConsultarPedidoUseCase;
 import br.com.ismyburguer.pedido.adapter.interfaces.in.PagarPedidoUseCase;
+import br.com.ismyburguer.pedido.entity.Pedido;
 
 import java.util.UUID;
 
@@ -19,18 +18,15 @@ public class PagarPedidoUseCaseImpl implements PagarPedidoUseCase {
     private final ConsultarPagamentoUseCase consultarPagamentoUseCase;
     private final ConsultarPedidoUseCase pedidoUseCase;
     private final AlterarStatusPedidoUseCase alterarStatusPedidoUseCase;
-    private final GerarControlePedidoUseCase gerarControlePedidoUseCase;
 
     public PagarPedidoUseCaseImpl(EfetuarPagamentoUseCase pagamentoUseCase,
                                   ConsultarPedidoUseCase pedidoUseCase,
                                   ConsultarPagamentoUseCase consultarPagamentoUseCase,
-                                  AlterarStatusPedidoUseCase alterarStatusPedidoUseCase,
-                                  GerarControlePedidoUseCase gerarControlePedidoUseCase) {
+                                  AlterarStatusPedidoUseCase alterarStatusPedidoUseCase) {
         this.pagamentoUseCase = pagamentoUseCase;
         this.pedidoUseCase = pedidoUseCase;
         this.consultarPagamentoUseCase = consultarPagamentoUseCase;
         this.alterarStatusPedidoUseCase = alterarStatusPedidoUseCase;
-        this.gerarControlePedidoUseCase = gerarControlePedidoUseCase;
     }
 
     @Override
@@ -38,21 +34,22 @@ public class PagarPedidoUseCaseImpl implements PagarPedidoUseCase {
         Pedido pedido = pedidoUseCase.buscarPorId(pedidoId);
         alterarStatusPedidoUseCase.alterar(pedidoId, Pedido.StatusPedido.AGUARDANDO_PAGAMENTO);
 
-        UUID uuid = pagamentoUseCase.pagar(new Pagamento(
+        UUID pagamentoId = pagamentoUseCase.pagar(new Pagamento(
                 new Pagamento.PedidoId(pedido.getPedidoId().get().getPedidoId()),
                 new Pagamento.Total(pedido.getTotal().getValor())
         ));
-        Pagamento pagamento = consultarPagamentoUseCase.consultar(uuid.toString());
+
+        return consultarPagamento(pagamentoId);
+    }
+
+    private String consultarPagamento(UUID pagamentoId) {
+        Pagamento pagamento = consultarPagamentoUseCase.consultar(pagamentoId.toString());
         Pagamento.StatusPagamento statusPagamento = pagamento.getStatusPagamento();
 
-        switch (statusPagamento) {
-            case AGUARDANDO_CONFIRMACAO -> alterarStatusPedidoUseCase.alterar(pedidoId, Pedido.StatusPedido.AGUARDANDO_PAGAMENTO);
-            case NAO_AUTORIZADO -> alterarStatusPedidoUseCase.alterar(pedidoId, Pedido.StatusPedido.PAGAMENTO_NAO_AUTORIZADO);
-            case PAGO -> {
-                alterarStatusPedidoUseCase.alterar(pedidoId, Pedido.StatusPedido.PAGO);
-                gerarControlePedidoUseCase.receberPedido(new ControlePedido.PedidoId(pedidoId.getPedidoId()));
-            }
-        }
-        return pagamento.getQrCode();
+        return switch (statusPagamento) {
+            case AGUARDANDO_CONFIRMACAO -> consultarPagamento(pagamentoId);
+            case NAO_AUTORIZADO -> throw new BusinessException("Pagamento não autorizado. Tente novamente");
+            case PAGO -> pagamento.getQrCode();
+        };
     }
 }

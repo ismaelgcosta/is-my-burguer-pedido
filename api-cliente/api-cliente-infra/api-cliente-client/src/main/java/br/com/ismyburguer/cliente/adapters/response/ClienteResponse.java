@@ -3,6 +3,7 @@ package br.com.ismyburguer.cliente.adapters.response;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -14,6 +15,7 @@ import java.util.UUID;
 
 @Getter
 @Setter
+@EqualsAndHashCode(of = "clienteId")
 public class ClienteResponse {
 
     private UUID clienteId = UUID.randomUUID();
@@ -39,13 +41,6 @@ public class ClienteResponse {
     public ClienteResponse() {
     }
 
-    public ClienteResponse(String nome, String sobrenome, String email, String cpf) {
-        this.nome = nome;
-        this.sobrenome = sobrenome;
-        this.email = email;
-        this.cpf = cpf;
-    }
-
     public ClienteResponse(String nome, String sobrenome, String email, String cpf, String username) {
         this.nome = nome;
         this.sobrenome = sobrenome;
@@ -58,17 +53,4 @@ public class ClienteResponse {
         return Optional.ofNullable(cpf);
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-
-        if (!(o instanceof ClienteResponse that)) return false;
-
-        return new EqualsBuilder().append(getClienteId(), that.getClienteId()).isEquals();
-    }
-
-    @Override
-    public int hashCode() {
-        return new HashCodeBuilder(17, 37).append(getClienteId()).toHashCode();
-    }
 }

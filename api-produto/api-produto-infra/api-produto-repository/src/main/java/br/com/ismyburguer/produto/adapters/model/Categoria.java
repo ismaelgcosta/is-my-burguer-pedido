@@ -13,10 +13,6 @@ public enum Categoria {
         this.categoria = categoria;
     }
 
-    public String getCategoria() {
-        return categoria;
-    }
-
     @Override
     public String toString() {
         return categoria;

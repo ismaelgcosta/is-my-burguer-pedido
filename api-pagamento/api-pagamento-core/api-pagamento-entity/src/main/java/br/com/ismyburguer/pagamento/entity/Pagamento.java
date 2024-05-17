@@ -3,15 +3,14 @@ package br.com.ismyburguer.pagamento.entity;
 import br.com.ismyburguer.core.validation.Validation;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.util.UUID;
 
 @Getter
 @AllArgsConstructor
+@NoArgsConstructor
 public class Pagamento implements Validation {
 
     @NotNull(message = "Informe o código do Pedido")
@@ -51,14 +50,6 @@ public class Pagamento implements Validation {
             this.descricao = descricao;
         }
 
-        public String getDescricao() {
-            return descricao;
-        }
-
-        @Override
-        public String toString() {
-            return descricao;
-        }
     }
 
     @Getter
@@ -70,15 +61,6 @@ public class Pagamento implements Validation {
 
         FormaPagamento(String descricao) {
             this.descricao = descricao;
-        }
-
-        public String getDescricao() {
-            return descricao;
-        }
-
-        @Override
-        public String toString() {
-            return descricao;
         }
     }
 
@@ -93,18 +75,11 @@ public class Pagamento implements Validation {
             this.descricao = descricao;
         }
 
-        public String getDescricao() {
-            return descricao;
-        }
-
-        @Override
-        public String toString() {
-            return descricao;
-        }
     }
 
     @Getter
     @AllArgsConstructor
+    @EqualsAndHashCode
     public static class PedidoId {
 
         @NotNull(message = "Informe o código do Pedido")

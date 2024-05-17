@@ -2,10 +2,7 @@ package br.com.ismyburguer.pedido.adapters.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
@@ -22,9 +19,14 @@ import java.util.UUID;
 )
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode(of = {
+        "itemPedidoId",
+        "produtoId",
+})
 public class ItemPedidoModel {
 
     @Id
+    @NonNull
     private UUID itemPedidoId = UUID.randomUUID();
 
     @ManyToOne
@@ -32,14 +34,18 @@ public class ItemPedidoModel {
     private PedidoModel pedido;
 
     @Column(name = "produto_id", columnDefinition = "uuid references produto(produto_id)")
+    @NonNull
     private UUID produtoId;
 
+    @NonNull
     private int quantidade;
 
     @NotNull
+    @NonNull
     private BigDecimal preco;
 
     @NotNull
+    @NonNull
     private BigDecimal valorTotal;
 
     public ItemPedidoModel(UUID itemPedidoId, UUID produtoId, int quantidade, BigDecimal preco, BigDecimal valorTotal) {
@@ -48,27 +54,5 @@ public class ItemPedidoModel {
         this.quantidade = quantidade;
         this.preco = preco;
         this.valorTotal = valorTotal;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-
-        if (!(o instanceof ItemPedidoModel that)) return false;
-
-        return new EqualsBuilder()
-                .append(getItemPedidoId(), that.getItemPedidoId())
-                .append(getPedido(), that.getPedido())
-                .append(getProdutoId(), that.getProdutoId())
-                .isEquals();
-    }
-
-    @Override
-    public int hashCode() {
-        return new HashCodeBuilder(17, 37)
-                .append(getItemPedidoId())
-                .append(getPedido())
-                .append(getProdutoId())
-                .toHashCode();
     }
 }

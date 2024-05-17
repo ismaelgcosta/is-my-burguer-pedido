@@ -1,10 +1,7 @@
 package br.com.ismyburguer.pedido.adapters.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
@@ -20,6 +17,7 @@ import java.util.UUID;
 @Table(name = "pedido")
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode(of = "pedidoId")
 public class PedidoModel {
 
     @Id
@@ -37,13 +35,6 @@ public class PedidoModel {
 
     private BigDecimal valorTotal;
 
-    public PedidoModel(UUID pedidoId, UUID clienteId, StatusPedidoEntity statusPedido, BigDecimal valorTotal) {
-        this.pedidoId = pedidoId;
-        this.clienteId = clienteId;
-        this.statusPedido = statusPedido;
-        this.valorTotal = valorTotal;
-    }
-
     public PedidoModel(UUID clienteId, StatusPedidoEntity statusPedido, BigDecimal valorTotal) {
         this.clienteId = clienteId;
         this.statusPedido = statusPedido;
@@ -52,20 +43,6 @@ public class PedidoModel {
 
     public Optional<UUID> getClienteId() {
         return Optional.ofNullable(clienteId);
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-
-        if (!(o instanceof PedidoModel that)) return false;
-
-        return new EqualsBuilder().append(getPedidoId(), that.getPedidoId()).isEquals();
-    }
-
-    @Override
-    public int hashCode() {
-        return new HashCodeBuilder(17, 37).append(getPedidoId()).toHashCode();
     }
 
     public void limparItens() {

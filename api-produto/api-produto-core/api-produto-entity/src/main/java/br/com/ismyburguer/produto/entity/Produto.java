@@ -5,6 +5,7 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
@@ -12,6 +13,7 @@ import java.util.UUID;
 
 @Getter
 @AllArgsConstructor
+@NoArgsConstructor
 public class Produto implements Validation {
 
     @Valid
@@ -69,10 +71,6 @@ public class Produto implements Validation {
 
         Categoria(String descricao) {
             this.descricao = descricao;
-        }
-
-        public String getDescricao() {
-            return descricao;
         }
 
         @Override

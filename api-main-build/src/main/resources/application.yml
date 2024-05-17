@@ -54,6 +54,9 @@ aws:
     user-pool-id: ${AWS_COGNITO_USER_POOL_ID}
 
 spring:
+  profiles:
+    active: dev
+
   application:
     name: is-my-burguer-pedido
 
@@ -98,12 +101,6 @@ spring:
             jws-algorithms: RS256
             jwk-set-uri: https://cognito-idp.${aws.region}.amazonaws.com/${aws.cognito.user-pool-id}/.well-known/jwks.json
             issuer-uri: https://cognito-idp.${aws.region}.amazonaws.com/${aws.cognito.user-pool-id}
-
-  # Quartz
-  quartz:
-    job-store-type: jdbc
-    jdbc:
-      initialize-schema: true
 
 info:
   app:

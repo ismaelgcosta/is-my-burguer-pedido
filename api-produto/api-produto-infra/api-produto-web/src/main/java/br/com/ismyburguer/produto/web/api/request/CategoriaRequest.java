@@ -1,5 +1,8 @@
 package br.com.ismyburguer.produto.web.api.request;
 
+import lombok.Getter;
+
+@Getter
 public enum CategoriaRequest {
 
     LANCHE("Lanche"),
@@ -11,10 +14,6 @@ public enum CategoriaRequest {
 
     CategoriaRequest(String categoria) {
         this.categoria = categoria;
-    }
-
-    public String getCategoria() {
-        return categoria;
     }
 
     @Override

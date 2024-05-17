@@ -1,0 +1,102 @@
+logging.level.org.springframework.web: DEBUG
+logging.level.org.hibernate: ERROR
+
+feign:
+  httpclient:
+    disableSslValidation: true
+    enabled: false
+  okhttp:
+    enabled: true
+
+http:
+  client:
+    ssl:
+      trust-store: classpath:springboot.p12
+      trust-store-password: password
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - mappings
+          - env
+          - health
+          - info
+springdoc:
+  version: '@springdoc.version@'
+  swagger-ui:
+    display-request-duration: true
+    groups-order: DESC
+    operationsSorter: method
+    disable-swagger-default-url: true
+    use-root-path: true
+    show-actuator: true
+  show-actuator: true
+  cache:
+    disabled: true
+server:
+  servlet:
+    context-path: /
+  forward-headers-strategy: framework
+  ssl:
+    key-store: classpath:springboot.p12
+    key-store-password: password
+    key-store-type: pkcs12
+    key-alias: springboot
+    key-password: password
+  port: 8843
+aws:
+  api-gateway: http://localhost:8080
+  region: ${AWS_REGION}
+  cognito:
+    domain: ${CLIENT_DOMAIN}
+    user-pool-id: ${AWS_COGNITO_USER_POOL_ID}
+
+spring:
+  profiles:
+    active: test
+
+  application:
+    name: is-my-burguer-pedido
+
+  h2:
+    console:
+      enabled: false
+      path: /h2
+
+  datasource:
+    url: jdbc:h2:mem:ismyburguer
+    username: sa
+    password: password
+    driverClassName: org.h2.Driver
+
+  # JPA properties
+  jpa:
+    hibernate:
+      ddl-auto: none # When you launch the application for the first time - switch "none" at "create"
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
+        implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+    show-sql: true
+    database: h2
+    database-platform: org.hibernate.dialect.H2Dialect
+
+  security:
+    oauth2:
+      client:
+        provider:
+          cognito:
+            authorization-uri: https://${aws.cognito.domain}.auth.${aws.region}.amazoncognito.com/oauth2/authorize
+            token-uri: https://${aws.cognito.domain}.auth.${aws.region}.amazoncognito.com/oauth2/token
+            user-info-uri: https://${aws.cognito.domain}.auth.${aws.region}.amazoncognito.com/oauth2/userInfo
+            jwk-set-uri: https://cognito-idp.${aws.region}.amazonaws.com/${aws.cognito.user-pool-id}/.well-known/jwks.json
+            issuerUri: https://cognito-idp.${aws.region}.amazonaws.com/${aws.cognito.user-pool-id}
+            user-name-attribute: username
+            authorization-grant-type: authorization_code
+
+        resourceserver:
+          cognito:
+            jws-algorithms: RS256
+            jwk-set-uri: https://cognito-idp.${aws.region}.amazonaws.com/${aws.cognito.user-pool-id}/.well-known/jwks.json
+            issuer-uri: https://cognito-idp.${aws.region}.amazonaws.com/${aws.cognito.user-pool-id}

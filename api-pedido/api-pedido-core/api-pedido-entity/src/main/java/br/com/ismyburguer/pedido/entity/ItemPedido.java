@@ -6,12 +6,15 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
 import java.math.BigDecimal;
 import java.util.Optional;
 import java.util.UUID;
 
 @Getter
+@RequiredArgsConstructor
 @AllArgsConstructor
 public class ItemPedido implements Validation {
 
@@ -20,19 +23,16 @@ public class ItemPedido implements Validation {
     private Pedido.PedidoId pedidoId;
 
     @NotNull(message = "Informe o código do Produto")
+    @NonNull
     private ProdutoId produtoId;
 
     @NotNull(message = "Informe a quantidade do item")
+    @NonNull
     private Quantidade quantidade;
 
     @NotNull(message = "Informe o preço do item")
+    @NonNull
     private Preco preco;
-
-    public ItemPedido(ProdutoId produtoId, Quantidade quantidade, Preco preco) {
-        this.produtoId = produtoId;
-        this.quantidade = quantidade;
-        this.preco = preco;
-    }
 
     @Getter
     @AllArgsConstructor

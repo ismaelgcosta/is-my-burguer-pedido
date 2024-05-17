@@ -3,13 +3,12 @@ package br.com.ismyburguer.pedido.entity;
 
 import br.com.ismyburguer.core.exception.BusinessException;
 import br.com.ismyburguer.core.validation.Validation;
+import com.google.common.collect.Lists;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.text.MessageFormat;
@@ -19,6 +18,7 @@ import java.util.UUID;
 
 @Getter
 @AllArgsConstructor
+@NoArgsConstructor
 public class Pedido implements Validation {
 
     @Valid
@@ -31,7 +31,7 @@ public class Pedido implements Validation {
     private StatusPedido statusPedido = StatusPedido.ABERTO;
 
     @Size(min = 1, message = "É necessário informar ao menos um item no pedido")
-    private final List<ItemPedido> itens;
+    private List<ItemPedido> itens = Lists.newArrayList();
 
     public Pedido(PedidoId pedidoId, List<ItemPedido> itens) {
         this.pedidoId = pedidoId;
@@ -120,6 +120,7 @@ public class Pedido implements Validation {
 
     @Getter
     @AllArgsConstructor
+    @EqualsAndHashCode
     public static class PedidoId {
 
         @NotNull(message = "Informe o código do Pedido")

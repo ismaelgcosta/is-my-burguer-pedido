@@ -4,6 +4,7 @@ import feign.Client;
 import feign.Feign;
 import feign.gson.GsonDecoder;
 import feign.gson.GsonEncoder;
+import lombok.Setter;
 import org.apache.hc.client5.http.ssl.NoopHostnameVerifier;
 import org.apache.hc.client5.http.ssl.TrustAllStrategy;
 import org.apache.hc.core5.ssl.SSLContextBuilder;
@@ -18,6 +19,7 @@ import java.security.NoSuchAlgorithmException;
 public class FeignClientAPI {
 
     @Value("${aws.api-gateway}")
+    @Setter
     protected String apiGateway;
 
     protected final OAuth2ClientCredentialsFeignInterceptorAPI interceptor;
@@ -41,7 +43,7 @@ public class FeignClientAPI {
                     .client(client)
                     .target(apiType, apiGateway);
         } catch (NoSuchAlgorithmException | KeyManagementException | KeyStoreException e) {
-            throw new RuntimeException(e);
+            throw new IllegalArgumentException(e);
         }
     }
 

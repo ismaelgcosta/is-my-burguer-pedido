@@ -8,13 +8,12 @@ import org.hibernate.validator.constraints.UUID;
 
 @UseCase
 public class ConsultaPagamentoUseCaseImpl implements ConsultarPagamentoUseCase {
-    private final ConsultarPagamentoAPI repository;
-    public ConsultaPagamentoUseCaseImpl(ConsultarPagamentoAPI repository) {
-        this.repository = repository;
+    private final ConsultarPagamentoAPI pagamentoAPI;
+    public ConsultaPagamentoUseCaseImpl(ConsultarPagamentoAPI pagamentoAPI) {
+        this.pagamentoAPI = pagamentoAPI;
     }
-
     @Override
     public Pagamento consultar(@UUID String pagamentoId) {
-        return repository.consultar(pagamentoId);
+        return pagamentoAPI.consultar(pagamentoId);
     }
 }
