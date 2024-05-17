@@ -35,7 +35,7 @@ public class PagarPedidoUseCaseImpl implements PagarPedidoUseCase {
         alterarStatusPedidoUseCase.alterar(pedidoId, Pedido.StatusPedido.AGUARDANDO_PAGAMENTO);
 
         UUID pagamentoId = pagamentoUseCase.pagar(new Pagamento(
-                new Pagamento.PedidoId(pedido.getPedidoId().get().getPedidoId()),
+                new Pagamento.PedidoId(pedido.getPedidoId().orElseThrow(() -> new IllegalArgumentException("id está nulo")).getPedidoId()),
                 new Pagamento.Total(pedido.getTotal().getValor())
         ));
 
