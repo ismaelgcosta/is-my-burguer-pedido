@@ -10,6 +10,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
 
@@ -37,6 +38,7 @@ class CadastrarPedidoRequestConverterTest {
         CadastrarItemPedidoRequest itemPedidoRequest = EnhancedRandomBuilder.aNewEnhancedRandom().nextObject(CadastrarItemPedidoRequest.class);
         itemPedidoRequest.setProdutoId(UUID.randomUUID().toString());
         itemPedidoRequest.setQuantidade(12);
+        itemPedidoRequest.setPreco(BigDecimal.ONE);
         ItemPedido itemPedido = EnhancedRandomBuilder.aNewEnhancedRandom().nextObject(ItemPedido.class);
         when(itemPedidoRequestConverter.convert(itemPedidoRequest)).thenReturn(itemPedido);
         CadastrarPedidoRequest request = new CadastrarPedidoRequest();
