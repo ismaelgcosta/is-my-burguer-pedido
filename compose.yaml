@@ -1,7 +1,7 @@
 services:
   is-my-burguer-pedido:
     container_name: is-my-burguer-pedido
-    image: docker.io/ismaelgcosta/is-my-burguer-pedido:is-my-burguer-pedido-2.1.1
+    image: docker.io/ismaelgcosta/is-my-burguer-pedido:is-my-burguer-pedido-2.1.2
     environment:
       - AWS_REGION
       - CLIENT_DOMAIN
