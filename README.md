@@ -1,4 +1,4 @@
-# Is My Burguer Pedido [![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=ismaelgcosta_is-my-burguer-pagamento)](https://sonarcloud.io/summary/new_code?id=ismaelgcosta_is-my-burguer-pagamento)
+# Is My Burguer Pedido [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=ismaelgcosta_is-my-burguer-pedido&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=ismaelgcosta_is-my-burguer-pedido)
 
 Projeto para aplicação de conhecimentos da Fase 4 da Pós-Graduação em SOFTWARE ARCHITECTURE da FIAP
 
