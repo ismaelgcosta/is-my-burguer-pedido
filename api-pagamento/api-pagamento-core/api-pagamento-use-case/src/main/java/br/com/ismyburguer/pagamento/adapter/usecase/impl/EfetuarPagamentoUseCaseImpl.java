@@ -16,7 +16,7 @@ public class EfetuarPagamentoUseCaseImpl implements EfetuarPagamentoUseCase {
     }
 
     @Override
-    public UUID pagar(@Valid Pagamento pagamento) {
-        return efetuarPagamentoAPI.pagar(pagamento);
+    public void pagar(@Valid Pagamento pagamento) {
+        efetuarPagamentoAPI.pagar(pagamento);
     }
 }

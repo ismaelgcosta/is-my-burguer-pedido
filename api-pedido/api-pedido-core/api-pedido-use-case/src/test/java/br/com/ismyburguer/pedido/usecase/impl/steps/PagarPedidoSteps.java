@@ -59,7 +59,6 @@ public class PagarPedidoSteps {
         Pagamento pagamento = mock(Pagamento.class);
         when(pagamento.getStatusPagamento()).thenReturn(Pagamento.StatusPagamento.PAGO);
         when(pagamento.getQrCode()).thenReturn("qr-code");
-        when(pagamentoUseCase.pagar(any())).thenReturn(UUID.randomUUID());
         when(consultarPagamentoUseCase.consultar(anyString())).thenReturn(pagamento);
     }
 
@@ -67,7 +66,6 @@ public class PagarPedidoSteps {
     public void o_pagamento_nao_e_autorizado() {
         Pagamento pagamento = mock(Pagamento.class);
         when(pagamento.getStatusPagamento()).thenReturn(Pagamento.StatusPagamento.NAO_AUTORIZADO);
-        when(pagamentoUseCase.pagar(any())).thenReturn(UUID.randomUUID());
         when(consultarPagamentoUseCase.consultar(anyString())).thenReturn(pagamento);
     }
 
@@ -79,8 +77,7 @@ public class PagarPedidoSteps {
     @When("eu tento pagar o pedido")
     public void eu_tento_pagar_o_pedido() {
         try {
-            when(pagamentoUseCase.pagar(any())).thenReturn(UUID.randomUUID());
-            qrCode = pagarPedidoUseCase.pagar(pedidoId);
+            pagarPedidoUseCase.pagar(pedidoId);
         } catch (Exception e) {
             excecao = e;
         }

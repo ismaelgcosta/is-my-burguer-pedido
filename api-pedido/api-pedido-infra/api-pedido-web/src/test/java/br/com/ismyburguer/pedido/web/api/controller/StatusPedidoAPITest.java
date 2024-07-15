@@ -2,6 +2,10 @@ package br.com.ismyburguer.pedido.web.api.controller;
 
 import br.com.ismyburguer.pedido.adapter.interfaces.in.AlterarStatusPedidoUseCase;
 import br.com.ismyburguer.pedido.entity.Pedido;
+import br.com.ismyburguer.pedido.web.api.request.PedidoRequest;
+import br.com.ismyburguer.pedido.web.api.request.StatusPedidoRequest;
+import br.com.ismyburguer.pedido.web.sqs.listener.StatusPedidoAPI;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -28,11 +32,12 @@ class StatusPedidoAPITest {
     @Test
     void alterarStatusPedido_DeveAlterarStatusQuandoPedidoExistirEStatusValido() {
         // Arrange
-        String pedidoId = UUID.randomUUID().toString();
+        UUID pedidoId = UUID.randomUUID();
         String status = "ABERTO";
+        PedidoRequest pedidoRequest = new PedidoRequest(pedidoId, StatusPedidoRequest.valueOf(status));
 
         // Act
-        assertDoesNotThrow(() -> statusPedidoAPI.alterarStatusPedido(pedidoId, status));
+        assertDoesNotThrow(() -> statusPedidoAPI.alterarStatusPedido(new ObjectMapper().writeValueAsString(pedidoRequest)));
 
         // Assert
         verify(useCase, times(1)).alterar(any(Pedido.PedidoId.class), any(Pedido.StatusPedido.class));
@@ -41,12 +46,13 @@ class StatusPedidoAPITest {
     @Test
     void alterarStatusPedido_DeveLancarExcecaoQuandoPedidoInexistente() {
         // Arrange
-        String pedidoId = UUID.randomUUID().toString();
+        UUID pedidoId = UUID.randomUUID();
         String status = "ABERTO";
+        PedidoRequest pedidoRequest = new PedidoRequest(pedidoId, StatusPedidoRequest.valueOf(status));
         doThrow(ResponseStatusException.class).when(useCase).alterar(any(Pedido.PedidoId.class), any(Pedido.StatusPedido.class));
 
         // Act & Assert
-        assertThrows(ResponseStatusException.class, () -> statusPedidoAPI.alterarStatusPedido(pedidoId, status));
+        assertThrows(ResponseStatusException.class, () -> statusPedidoAPI.alterarStatusPedido(new ObjectMapper().writeValueAsString(pedidoRequest)));
     }
 
 }

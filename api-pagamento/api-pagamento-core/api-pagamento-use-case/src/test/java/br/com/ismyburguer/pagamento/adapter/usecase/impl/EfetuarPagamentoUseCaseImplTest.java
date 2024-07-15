@@ -32,15 +32,9 @@ public class EfetuarPagamentoUseCaseImplTest {
 
         // Configuração do comportamento da mock API
         UUID uuidEsperado = UUID.randomUUID();
-        when(efetuarPagamentoAPI.pagar(any(Pagamento.class))).thenReturn(uuidEsperado);
 
         // Teste de pagamento bem-sucedido
-        UUID resultado = useCase.pagar(pagamentoValido);
+        useCase.pagar(pagamentoValido);
 
-        // Verifica se o UUID retornado não é nulo
-        assertNotNull(resultado);
-
-        // Verifica se o UUID retornado é igual ao UUID esperado
-        assertEquals(uuidEsperado, resultado);
     }
 }

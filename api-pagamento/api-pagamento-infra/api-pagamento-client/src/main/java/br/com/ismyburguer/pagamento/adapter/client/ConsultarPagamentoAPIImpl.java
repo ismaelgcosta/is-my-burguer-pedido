@@ -22,9 +22,9 @@ public class ConsultarPagamentoAPIImpl implements ConsultarPagamentoAPI {
     }
 
     @Override
-    public Pagamento consultar(@UUID String pagamentoId) {
+    public Pagamento consultar(@UUID String pedidoId) {
         try {
-            PagamentoResponse pagamento = pagamentoAPI.findById(java.util.UUID.fromString(pagamentoId));
+            PagamentoResponse pagamento = pagamentoAPI.findById(java.util.UUID.fromString(pedidoId));
             return converter.convert(pagamento);
         } catch (FeignException e) {
             throw new EntityNotFoundException("Pagamento não encontrado");

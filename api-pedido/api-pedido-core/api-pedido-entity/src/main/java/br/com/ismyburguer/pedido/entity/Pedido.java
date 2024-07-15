@@ -68,7 +68,9 @@ public class Pedido implements Validation {
         AGUARDANDO_PAGAMENTO("Aguardando Pagamento"),
         PAGO("Pago"),
         PAGAMENTO_NAO_AUTORIZADO("Pagamento Não Autorizado"),
+        AGUARDANDO_CONFIRMACAO_PAGAMENTO("Aguardando Confirmação de Pagamento"),
         RECEBIDO("Recebido"),
+        CANCELADO("Cancelado"),
         EM_PREPARACAO("Em Preparação"),
         PRONTO("Pronto"),
         FINALIZADO("Finalizado");
@@ -91,6 +93,10 @@ public class Pedido implements Validation {
         public void validarProximoStatus(StatusPedido statusPedido) {
             String message = "O Pedido precisa estar com o Status {0} para poder ser alterado para " + statusPedido.getDescricao();
 
+            if(statusPedido == this) {
+                return;
+            }
+
             if(statusPedido == AGUARDANDO_PAGAMENTO && this != FECHADO) {
                 throw new BusinessException(MessageFormat.format(message, FECHADO.getDescricao()));
             }
@@ -105,6 +111,10 @@ public class Pedido implements Validation {
 
             if(statusPedido == PAGO && this != AGUARDANDO_PAGAMENTO && this != PAGAMENTO_NAO_AUTORIZADO) {
                 throw new BusinessException(MessageFormat.format(message, AGUARDANDO_PAGAMENTO.getDescricao() + " ou " + PAGAMENTO_NAO_AUTORIZADO.getDescricao()));
+            }
+
+            if(statusPedido == AGUARDANDO_CONFIRMACAO_PAGAMENTO && this != AGUARDANDO_PAGAMENTO && this != PAGAMENTO_NAO_AUTORIZADO && this != PAGO) {
+                throw new BusinessException(MessageFormat.format(message, AGUARDANDO_PAGAMENTO.getDescricao() + " ou " + PAGAMENTO_NAO_AUTORIZADO.getDescricao()) + " ou " + PAGO.getDescricao());
             }
 
             if(statusPedido == PRONTO && this != EM_PREPARACAO) {

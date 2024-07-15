@@ -13,6 +13,7 @@ public class PagamentoToPagamentoRequestConverter implements Converter<Pagamento
     @Override
     public PagamentoRequest convert(Pagamento source) {
         return new PagamentoRequest(
+                source.getPagamentoId(),
                 source.getPedidoId().getPedidoId(),
                 StatusPagamento.valueOf(source.getStatusPagamento().name()),
                 TipoPagamento.valueOf(source.getTipoPagamento().name()),

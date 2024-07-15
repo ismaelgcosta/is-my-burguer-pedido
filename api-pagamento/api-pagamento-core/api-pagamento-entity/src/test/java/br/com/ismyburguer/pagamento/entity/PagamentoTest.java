@@ -32,6 +32,7 @@ class PagamentoTest {
         String qrCode = "qr_code";
 
         Pagamento pedido = new Pagamento(
+                null,
                 pedidoId,
                 total,
                 NAO_AUTORIZADO,

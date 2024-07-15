@@ -10,6 +10,7 @@ public class PagamentoResponseToPagamentoConverter implements Converter<Pagament
     @Override
     public Pagamento convert(PagamentoResponse source) {
         return new Pagamento(
+                source.getPagamentoId(),
                 new Pagamento.PedidoId(source.getPedidoId()),
                 new Pagamento.Total(source.getValorTotal()),
                 Pagamento.StatusPagamento.valueOf(source.getStatusPagamento().name()),

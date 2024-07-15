@@ -13,6 +13,8 @@ import java.util.UUID;
 @NoArgsConstructor
 public class Pagamento implements Validation {
 
+    private UUID pagamentoId;
+
     @NotNull(message = "Informe o código do Pedido")
     private PedidoId pedidoId;
 
@@ -37,10 +39,15 @@ public class Pagamento implements Validation {
         this.statusPagamento = StatusPagamento.PAGO;
     }
 
+    public void estornado() {
+        this.statusPagamento = StatusPagamento.PAGO;
+    }
+
     @Getter
     public enum StatusPagamento {
 
         AGUARDANDO_CONFIRMACAO("Aguardando Confirmação do Pagamento"),
+        ESTORNADO("Estornado"),
         NAO_AUTORIZADO("Não Autorizado"),
         PAGO("Pago");
 
