@@ -23,8 +23,10 @@ public class PagamentoToPagamentoRequestConverterTest {
         Pagamento.TipoPagamento tipoPagamento = Pagamento.TipoPagamento.QR_CODE;
         Pagamento.FormaPagamento formaPagamento = Pagamento.FormaPagamento.MERCADO_PAGO;
         String qrCode = "1234567890";
+        UUID pagamentoId = UUID.randomUUID();
 
         Pagamento pagamento = new Pagamento(
+                pagamentoId,
                 new Pagamento.PedidoId(UUID.fromString(pedidoId)),
                 new Pagamento.Total(valorTotal),
                 statusPagamento,
@@ -40,6 +42,7 @@ public class PagamentoToPagamentoRequestConverterTest {
         PagamentoRequest pagamentoRequest = converter.convert(pagamento);
 
         // Verificar se a conversão foi realizada corretamente
+        assertEquals(pagamentoId, pagamentoRequest.getPagamentoId());
         assertEquals(pedidoId, pagamentoRequest.getPedidoId().toString());
         assertEquals(StatusPagamento.valueOf(statusPagamento.name()), pagamentoRequest.getStatusPagamento());
         assertEquals(TipoPagamento.valueOf(tipoPagamento.name()), pagamentoRequest.getTipoPagamento());
