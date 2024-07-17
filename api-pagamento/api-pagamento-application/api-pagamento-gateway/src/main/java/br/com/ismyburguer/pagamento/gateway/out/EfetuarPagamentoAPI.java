@@ -6,6 +6,6 @@ import java.util.UUID;
 
 public interface EfetuarPagamentoAPI {
 
-    UUID pagar(Pagamento pagamento);
+    void pagar(Pagamento pagamento);
 
 }

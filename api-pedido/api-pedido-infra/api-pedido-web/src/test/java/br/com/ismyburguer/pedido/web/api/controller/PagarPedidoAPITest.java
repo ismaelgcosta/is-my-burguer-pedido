@@ -14,8 +14,7 @@ import java.util.UUID;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.doThrow;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class PagarPedidoAPITest {
@@ -33,11 +32,11 @@ class PagarPedidoAPITest {
         String mensagemEsperada = "Pedido pago com sucesso";
 
         // Act
-        when(useCase.pagar(any(Pedido.PedidoId.class))).thenReturn(mensagemEsperada);
-        String mensagemAtual = pagarPedidoAPI.pagarPedido(pedidoId);
+        doReturn(mensagemEsperada).when(useCase).pagar(any(Pedido.PedidoId.class));
+        pagarPedidoAPI.pagarPedido(pedidoId);
 
         // Assert
-        assertEquals(mensagemEsperada, mensagemAtual);
+        verify(useCase).pagar(new Pedido.PedidoId(pedidoId));
     }
 
     @Test

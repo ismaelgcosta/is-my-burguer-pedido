@@ -11,8 +11,8 @@ import java.util.UUID;
 public interface PagamentoAPI {
 
     @Headers("Content-Type: application/json")
-    @RequestLine("GET /pagamentos/{pagamentoId}")
-    PagamentoResponse findById(@Param("pagamentoId") UUID pagamentoId);
+    @RequestLine("GET /pagamentos/{pedidoId}")
+    PagamentoResponse findById(@Param("pedidoId") UUID pedidoId);
 
     @Headers("Content-Type: application/json")
     @RequestLine("POST /pagamentos")

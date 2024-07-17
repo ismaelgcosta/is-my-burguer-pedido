@@ -3,6 +3,8 @@ import br.com.ismyburguer.core.adapter.out.FeignClientAPI;
 import br.com.ismyburguer.pagamento.adapter.converter.PagamentoToPagamentoRequestConverter;
 import br.com.ismyburguer.pagamento.adapter.request.PagamentoRequest;
 import br.com.ismyburguer.pagamento.entity.Pagamento;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import io.awspring.cloud.sqs.operations.SqsTemplate;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -19,7 +21,7 @@ import static org.mockito.Mockito.*;
 public class EfetuarPagamentoAPIImplTest {
 
     @Mock
-    private FeignClientAPI feignClientAPI;
+    private SqsTemplate sqsTemplate;
 
     @Mock
     private PagamentoToPagamentoRequestConverter converter;
@@ -33,11 +35,11 @@ public class EfetuarPagamentoAPIImplTest {
     @BeforeEach
     void setUp() {
         pagamentoAPI = mock(PagamentoAPI.class);
-        when(feignClientAPI.createClient(PagamentoAPI.class)).thenReturn(pagamentoAPI);
 
         efetuarPagamentoAPI = new EfetuarPagamentoAPIImpl(
-                feignClientAPI,
-                converter
+                sqsTemplate,
+                converter,
+                new ObjectMapper()
         );
     }
     @Test
@@ -54,10 +56,10 @@ public class EfetuarPagamentoAPIImplTest {
         when(pagamentoAPI.save(any(PagamentoRequest.class))).thenReturn(pagamentoId);
 
         // Execução do método a ser testado
-        UUID idPagamentoRetornado = efetuarPagamentoAPI.pagar(pagamento);
+        efetuarPagamentoAPI.pagar(pagamento);
 
         // Verificação dos resultados
-        assertEquals(pagamentoId, idPagamentoRetornado);
+        verify(sqsTemplate).send(pagamentoRequest);
     }
 
 }

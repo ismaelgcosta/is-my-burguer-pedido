@@ -37,4 +37,8 @@ public class PagamentoRequest {
         this.qrCode = qrCode;
     }
 
+    public PagamentoRequest(UUID pedidoId, StatusPagamento statusPagamento) {
+        this.pedidoId = pedidoId;
+        this.statusPagamento = statusPagamento;
+    }
 }

@@ -53,14 +53,12 @@ public class PagarPedidoUseCaseImplTest {
         ));
         pagamentoMock.pago();
         pagamentoMock.setQrCode("qr-code");
-        when(pagamentoUseCase.pagar(any())).thenReturn(UUID.randomUUID());
         when(consultarPagamentoUseCase.consultar(any())).thenReturn(pagamentoMock);
 
         // Quando
-        String resultado = useCase.pagar(pedidoId);
+        useCase.pagar(pedidoId);
 
         // Então
-        assertNotNull(resultado);
         verify(alterarStatusPedidoUseCase, times(1)).alterar(pedidoId, Pedido.StatusPedido.AGUARDANDO_PAGAMENTO);
         verify(pagamentoUseCase, times(1)).pagar(any());
         verify(consultarPagamentoUseCase, times(1)).consultar(anyString());
@@ -69,7 +67,8 @@ public class PagarPedidoUseCaseImplTest {
     @Test
     public void deveLancarExcecaoAoPagarPedidoComPagamentoNaoAutorizado() {
         // Dado
-        Pedido.PedidoId pedidoId = new Pedido.PedidoId(UUID.randomUUID().toString());
+        String randomUIID = UUID.randomUUID().toString();
+        Pedido.PedidoId pedidoId = new Pedido.PedidoId(randomUIID);
         Pedido pedido = EnhancedRandomBuilder.aNewEnhancedRandom().nextObject(Pedido.class);
         when(pedidoUseCase.buscarPorId(pedidoId)).thenReturn(pedido);
 

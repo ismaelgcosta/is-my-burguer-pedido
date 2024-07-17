@@ -25,10 +25,10 @@ public class PagarPedidoAPI {
 
     @Operation(security = @SecurityRequirement(name = "Bearer-Authentication"), description = "Pagar Pedido")
     @PutMapping("/{pedidoId}/pagamento")
-    public String pagarPedido(
+    public void pagarPedido(
             @PathVariable @Valid @UUID(message = "O código do pedido informado está num formato inválido") String pedidoId
     ) {
-        return useCase.pagar(new Pedido.PedidoId(pedidoId));
+        useCase.pagar(new Pedido.PedidoId(pedidoId));
     }
 
 }

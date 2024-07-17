@@ -15,7 +15,7 @@ import java.math.BigDecimal;
 public class CriarProdutoRequest implements Validation {
 
     @NotBlank(message = "Informe o campo descrição")
-    @Size(min = 3, message = "A descrição deve conter pelo menos 3 letras")
+    @Size(min = 3, max = 255, message = "A descrição deve conter pelo menos 3 letras")
     private String descricao;
 
     @Schema(description = "Categoria do Produto",
