@@ -109,8 +109,8 @@ public class Pedido implements Validation {
                 throw new BusinessException(MessageFormat.format(message, ABERTO.getDescricao()));
             }
 
-            if(statusPedido == PAGO && this != AGUARDANDO_PAGAMENTO && this != PAGAMENTO_NAO_AUTORIZADO) {
-                throw new BusinessException(MessageFormat.format(message, AGUARDANDO_PAGAMENTO.getDescricao() + " ou " + PAGAMENTO_NAO_AUTORIZADO.getDescricao()));
+            if(statusPedido == PAGO && this != AGUARDANDO_PAGAMENTO && this != AGUARDANDO_CONFIRMACAO_PAGAMENTO && this != PAGAMENTO_NAO_AUTORIZADO) {
+                throw new BusinessException(MessageFormat.format(message, AGUARDANDO_CONFIRMACAO_PAGAMENTO.getDescricao() + " ou " + AGUARDANDO_PAGAMENTO.getDescricao() + " ou " + PAGAMENTO_NAO_AUTORIZADO.getDescricao()));
             }
 
             if(statusPedido == AGUARDANDO_CONFIRMACAO_PAGAMENTO && this != AGUARDANDO_PAGAMENTO && this != PAGAMENTO_NAO_AUTORIZADO && this != PAGO) {

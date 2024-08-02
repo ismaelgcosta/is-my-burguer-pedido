@@ -6,6 +6,7 @@ import br.com.ismyburguer.pagamento.adapter.request.FormaPagamento;
 import br.com.ismyburguer.pagamento.adapter.request.PagamentoRequest;
 import br.com.ismyburguer.pagamento.entity.Pagamento;
 import org.junit.jupiter.api.Test;
+import org.springframework.security.crypto.encrypt.Encryptors;
 
 import java.math.BigDecimal;
 import java.util.UUID;
