@@ -53,6 +53,7 @@ public class PedidoTest {
         );
 
         // Act & Assert
+        pedido.alterarStatus(Pedido.StatusPedido.ABERTO);
         assertThrows(BusinessException.class, () -> pedido.alterarStatus(Pedido.StatusPedido.PAGO));
         assertThrows(BusinessException.class, () -> pedido.alterarStatus(Pedido.StatusPedido.PRONTO));
         assertThrows(BusinessException.class, () -> pedido.alterarStatus(Pedido.StatusPedido.EM_PREPARACAO));
@@ -61,6 +62,18 @@ public class PedidoTest {
         pedido.alterarStatus(Pedido.StatusPedido.CANCELADO);
         assertThrows(BusinessException.class, () -> pedido.alterarStatus(Pedido.StatusPedido.FINALIZADO));
         assertThrows(BusinessException.class, () -> pedido.alterarStatus(Pedido.StatusPedido.FECHADO));
+
+        pedido.alterarStatus(Pedido.StatusPedido.ABERTO);
+        pedido.alterarStatus(Pedido.StatusPedido.FECHADO);
+        pedido.alterarStatus(Pedido.StatusPedido.AGUARDANDO_PAGAMENTO);
+        pedido.alterarStatus(Pedido.StatusPedido.PAGO);
+        pedido.alterarStatus(Pedido.StatusPedido.PAGAMENTO_NAO_AUTORIZADO);
+        pedido.alterarStatus(Pedido.StatusPedido.AGUARDANDO_CONFIRMACAO_PAGAMENTO);
+        pedido.alterarStatus(Pedido.StatusPedido.RECEBIDO);
+        pedido.alterarStatus(Pedido.StatusPedido.EM_PREPARACAO);
+        pedido.alterarStatus(Pedido.StatusPedido.PRONTO);
+        pedido.alterarStatus(Pedido.StatusPedido.FINALIZADO);
+        pedido.alterarStatus(Pedido.StatusPedido.CANCELADO);
     }
 
     @Test
