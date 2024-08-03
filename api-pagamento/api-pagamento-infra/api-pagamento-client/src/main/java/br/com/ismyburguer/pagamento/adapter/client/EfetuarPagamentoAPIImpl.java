@@ -7,10 +7,13 @@ import br.com.ismyburguer.pagamento.entity.Pagamento;
 import br.com.ismyburguer.pagamento.gateway.out.EfetuarPagamentoAPI;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.awspring.cloud.sqs.operations.SqsSendOptions;
 import io.awspring.cloud.sqs.operations.SqsTemplate;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.validation.annotation.Validated;
+
+import java.util.function.Consumer;
 
 @Validated
 @WebAdapter
@@ -36,12 +39,13 @@ public class EfetuarPagamentoAPIImpl implements EfetuarPagamentoAPI {
     public void pagar(Pagamento pagamento) {
         PagamentoRequest pagamentoRequest = converter.convert(pagamento);
 
-        sqsTemplate.send(to -> {
+        Consumer<SqsSendOptions<Object>> sqsSendOptionsConsumer = to -> {
             try {
                 to.queue(pagamentoQueue).payload(objectMapper.writer().withDefaultPrettyPrinter().writeValueAsString(pagamentoRequest));
             } catch (JsonProcessingException e) {
                 throw new IllegalArgumentException("Erro ao realizar checkout do pedido", e);
             }
-        });
+        };
+        sqsTemplate.send(sqsSendOptionsConsumer);
     }
 }
