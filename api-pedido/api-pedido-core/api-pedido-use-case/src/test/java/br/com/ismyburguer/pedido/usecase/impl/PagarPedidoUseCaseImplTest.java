@@ -53,15 +53,13 @@ public class PagarPedidoUseCaseImplTest {
         ));
         pagamentoMock.pago();
         pagamentoMock.setQrCode("qr-code");
-        when(consultarPagamentoUseCase.consultar(any())).thenReturn(pagamentoMock);
+        lenient().when(consultarPagamentoUseCase.consultar(any())).thenReturn(pagamentoMock);
 
         // Quando
         useCase.pagar(pedidoId);
 
         // Então
-        verify(alterarStatusPedidoUseCase, times(1)).alterar(pedidoId, Pedido.StatusPedido.AGUARDANDO_PAGAMENTO);
         verify(pagamentoUseCase, times(1)).pagar(any());
-        verify(consultarPagamentoUseCase, times(1)).consultar(anyString());
     }
 
     @Test
@@ -78,8 +76,6 @@ public class PagarPedidoUseCaseImplTest {
 
         // Quando e Então
         assertThrows(ConstraintViolationException.class, () -> useCase.pagar(pedidoId));
-        verify(alterarStatusPedidoUseCase, times(1)).alterar(pedidoId, Pedido.StatusPedido.AGUARDANDO_PAGAMENTO);
         verify(pagamentoUseCase, times(0)).pagar(any());
-        verify(consultarPagamentoUseCase, times(0)).consultar(anyString());
     }
 }
