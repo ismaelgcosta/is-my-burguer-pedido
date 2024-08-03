@@ -6,6 +6,7 @@ import br.com.ismyburguer.pedido.web.api.request.PedidoRequest;
 import br.com.ismyburguer.pedido.web.api.request.StatusPedidoRequest;
 import br.com.ismyburguer.pedido.web.sqs.listener.StatusPedidoAPI;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -26,8 +27,18 @@ class StatusPedidoAPITest {
     @Mock
     AlterarStatusPedidoUseCase useCase;
 
-    @InjectMocks
     StatusPedidoAPI statusPedidoAPI;
+
+    ObjectMapper objectMapper;
+
+    @BeforeEach
+    void setUp() {
+        objectMapper = new ObjectMapper();
+        statusPedidoAPI = new StatusPedidoAPI(
+                objectMapper,
+                useCase
+        );
+    }
 
     @Test
     void alterarStatusPedido_DeveAlterarStatusQuandoPedidoExistirEStatusValido() {

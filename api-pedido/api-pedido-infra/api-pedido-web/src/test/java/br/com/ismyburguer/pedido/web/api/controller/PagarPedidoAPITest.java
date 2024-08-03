@@ -29,10 +29,8 @@ class PagarPedidoAPITest {
     void pagarPedido_DeveRetornarMensagemQuandoPedidoExistir() {
         // Arrange
         String pedidoId = UUID.randomUUID().toString();
-        String mensagemEsperada = "Pedido pago com sucesso";
 
         // Act
-        doReturn(mensagemEsperada).when(useCase).pagar(any(Pedido.PedidoId.class));
         pagarPedidoAPI.pagarPedido(pedidoId);
 
         // Assert
