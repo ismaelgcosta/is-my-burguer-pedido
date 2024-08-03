@@ -29,10 +29,10 @@ spec:
           resources:
             limits:
               cpu: "2"
-              memory: "300Mi"
+              memory: "500Mi"
             requests:
-              cpu: "300m"
-              memory: "300Mi"
+              cpu: "500m"
+              memory: "500Mi"
           env:
             - name: POSTGRES_PASSWORD
               valueFrom:
