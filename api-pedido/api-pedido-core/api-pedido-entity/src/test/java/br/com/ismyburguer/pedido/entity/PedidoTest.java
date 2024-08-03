@@ -48,7 +48,7 @@ public class PedidoTest {
     public void alterarStatus_DeveLancarBusinessException_QuandoStatusNaoPermitido() {
         // Arrange
         Pedido pedido = new Pedido(
-                new Pedido.PedidoId(UUID.randomUUID()),
+                new Pedido.PedidoId(UUID.randomUUID().toString()),
                 List.of(new ItemPedido(new ItemPedido.ProdutoId(UUID.randomUUID()), new ItemPedido.Quantidade(1), new ItemPedido.Preco(BigDecimal.valueOf(10.0))))
         );
 
