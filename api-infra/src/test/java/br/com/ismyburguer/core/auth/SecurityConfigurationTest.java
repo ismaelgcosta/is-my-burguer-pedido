@@ -54,7 +54,7 @@ public class SecurityConfigurationTest {
         // Arrange
         JwtDecoder jwtDecoder = new TestSecurityConfig().jwtDecoder();
 
-        when(httpSecurity.csrf(any())).thenReturn(httpSecurity);
+        when(httpSecurity.headers(any())).thenReturn(httpSecurity);
         when(httpSecurity.authorizeHttpRequests(any())).thenReturn(httpSecurity);
         when(httpSecurity.oauth2ResourceServer(any())).thenReturn(httpSecurity);
 
@@ -62,7 +62,7 @@ public class SecurityConfigurationTest {
         securityConfiguration.filterChain(httpSecurity, jwtDecoder);
 
         // Assert
-        verify(httpSecurity).csrf(any());
+        verify(httpSecurity).headers(any());
         verify(httpSecurity).authorizeHttpRequests(any());
         verify(httpSecurity).oauth2ResourceServer(any());
         verify(httpSecurity).authenticationProvider(any());
