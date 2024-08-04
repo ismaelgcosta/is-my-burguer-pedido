@@ -27,17 +27,11 @@ public class CancelarPagamentoAPIImpl implements CancelarPagamentoAPI {
     @Value("${events.queues.is-my-burguer-pagamento-queue}")
     private String pagamentoQueue;
 
-    private final ConsultarPagamentoAPI consultarPagamentoAPI;
-    private final PagamentoToPagamentoRequestConverter converter;
     private final ObjectMapper objectMapper;
 
     public CancelarPagamentoAPIImpl(SqsTemplate sqsTemplate,
-                                    ConsultarPagamentoAPI consultarPagamentoAPI,
-                                    PagamentoToPagamentoRequestConverter converter,
                                     ObjectMapper objectMapper) {
         this.sqsTemplate = sqsTemplate;
-        this.consultarPagamentoAPI = consultarPagamentoAPI;
-        this.converter = converter;
         this.objectMapper = objectMapper;
     }
 
