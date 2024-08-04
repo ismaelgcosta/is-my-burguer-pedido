@@ -13,6 +13,7 @@ import java.nio.charset.StandardCharsets;
 
 @RestControllerAdvice
 public class EscapeHtmlAspect implements RequestBodyAdvice {
+
     @Override
     public boolean supports(MethodParameter methodParameter, Type targetType, Class<? extends HttpMessageConverter<?>> converterType) {
         //Apply this to all Controllers
