@@ -5,6 +5,7 @@ import br.com.ismyburguer.core.exception.EntityNotFoundException;
 import br.com.ismyburguer.pedido.adapters.entity.PedidoModel;
 import br.com.ismyburguer.pedido.adapters.entity.StatusPedidoEntity;
 import br.com.ismyburguer.pedido.gateway.out.FecharPedidoRepository;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 
 import java.util.UUID;
@@ -19,6 +20,7 @@ public class FecharPedidoRepositoryImpl implements FecharPedidoRepository {
     }
 
     @Override
+    @Transactional
     public void fecharPedido(UUID pedidoId) {
         PedidoModel pedidoModel = pedidoRepository
                 .findById(pedidoId)

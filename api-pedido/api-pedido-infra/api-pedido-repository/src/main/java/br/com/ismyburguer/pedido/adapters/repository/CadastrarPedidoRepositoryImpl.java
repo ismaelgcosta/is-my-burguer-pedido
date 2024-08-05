@@ -5,6 +5,7 @@ import br.com.ismyburguer.pedido.adapters.converter.PedidoToPedidoModelConverter
 import br.com.ismyburguer.pedido.adapters.entity.PedidoModel;
 import br.com.ismyburguer.pedido.entity.Pedido;
 import br.com.ismyburguer.pedido.gateway.out.CadastrarPedidoRepository;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 
 import java.util.UUID;
@@ -22,6 +23,7 @@ public class CadastrarPedidoRepositoryImpl implements CadastrarPedidoRepository 
     }
 
     @Override
+    @Transactional
     public UUID salvarPedido(Pedido pedido) {
         PedidoModel pedidoEntity = converter.convert(pedido);
         return pedidoRepository.save(pedidoEntity).getPedidoId();

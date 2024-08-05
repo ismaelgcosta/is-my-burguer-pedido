@@ -8,6 +8,7 @@ import br.com.ismyburguer.pedido.adapter.interfaces.in.AlterarStatusPedidoUseCas
 import br.com.ismyburguer.pedido.adapter.interfaces.in.ConsultarPedidoUseCase;
 import br.com.ismyburguer.pedido.entity.Pedido;
 import br.com.ismyburguer.pedido.gateway.out.AlterarStatusPedidoRepository;
+import org.springframework.transaction.annotation.Transactional;
 
 @UseCase
 public class AlterarStatusPedidoUseCaseImpl implements AlterarStatusPedidoUseCase {
@@ -26,6 +27,7 @@ public class AlterarStatusPedidoUseCaseImpl implements AlterarStatusPedidoUseCas
         pedido.alterarStatus(statusPedido);
         if(statusPedido == Pedido.StatusPedido.CANCELADO) {
             cancelarPagamentoUseCase.cancelar(new Pagamento.PedidoId(pedidoId.getPedidoId()));
+            pedido.alterarStatus(Pedido.StatusPedido.CANCELADO);
         }
         repository.alterar(pedidoId, statusPedido);
     }
