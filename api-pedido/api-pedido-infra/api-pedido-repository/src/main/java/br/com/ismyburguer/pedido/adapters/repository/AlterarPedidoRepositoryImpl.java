@@ -8,6 +8,7 @@ import br.com.ismyburguer.pedido.adapters.entity.StatusPedidoEntity;
 import br.com.ismyburguer.pedido.entity.Pedido;
 import br.com.ismyburguer.pedido.gateway.out.AlterarPedidoRepository;
 import jakarta.validation.Valid;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 
 import java.util.Optional;
@@ -25,6 +26,7 @@ public class AlterarPedidoRepositoryImpl implements AlterarPedidoRepository {
         this.converter = converter;
     }
 
+    @Transactional
     public void alterarPedido(String pedidoId, @Valid Pedido pedido) {
         UUID uuid = UUID.fromString(pedidoId);
         Optional<PedidoModel> entity = pedidoRepository.findById(uuid);

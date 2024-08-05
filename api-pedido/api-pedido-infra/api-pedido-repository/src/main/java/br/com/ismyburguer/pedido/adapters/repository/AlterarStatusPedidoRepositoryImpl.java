@@ -6,6 +6,7 @@ import br.com.ismyburguer.pedido.adapters.entity.PedidoModel;
 import br.com.ismyburguer.pedido.adapters.entity.StatusPedidoEntity;
 import br.com.ismyburguer.pedido.entity.Pedido;
 import br.com.ismyburguer.pedido.gateway.out.AlterarStatusPedidoRepository;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 
 import java.util.Optional;
@@ -18,6 +19,7 @@ public class AlterarStatusPedidoRepositoryImpl implements AlterarStatusPedidoRep
         this.pedidoRepository = pedidoRepository;
     }
 
+    @Transactional
     public void alterar(Pedido.PedidoId pedidoId, Pedido.StatusPedido statusPedido) {
         Optional<PedidoModel> entity = pedidoRepository.findById(pedidoId.getPedidoId());
         if(entity.isEmpty()) {
