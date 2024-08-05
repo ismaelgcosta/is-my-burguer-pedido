@@ -60,7 +60,7 @@ public class AlterarStatusPedidoUseCaseImplTest {
 
         alterarStatusPedidoUseCase.alterar(new Pedido.PedidoId(pedidoId), novoStatus);
 
-        verify(pedidoMock).alterarStatus(novoStatus);
+        verify(pedidoMock, times(2)).alterarStatus(novoStatus);
         verify(repository).alterar(new Pedido.PedidoId(pedidoId), novoStatus);
         verify(cancelarPagamentoUseCase, never()).cancelar(any());
     }
